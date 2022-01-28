@@ -5,6 +5,8 @@ import { useState } from "react";
 
 export default function NewNoteForm(props) {
 
+  const [isExpanded, setExpanded] = useState(false);
+
   const [note, setNote] = useState({
     title: "",
     content: ""
@@ -30,6 +32,10 @@ export default function NewNoteForm(props) {
     event.preventDefault();
   }
 
+  function expand() {
+    setExpanded(true);
+  }
+
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }} mt={2}>
       <Card sx={{ maxWidth: 480, width: '100%' }}>
@@ -44,23 +50,26 @@ export default function NewNoteForm(props) {
               }}
               mt={2}
             >
-              <TextField
-                id="title"
-                label="Title"
-                name="title"
-                variant="filled"
-                value={note.title}
-                onChange={handleChange}
-              />
+              {isExpanded &&
+                <TextField
+                  id="title"
+                  label="Título"
+                  name="title"
+                  variant="filled"
+                  value={note.title}
+                  onChange={handleChange}
+                />
+              }
               <TextField
                 id="content"
                 label="Contenido"
                 name="content"
                 variant="filled"
                 multiline
-                rows={3}
+                rows={isExpanded ? 3 : 1}
                 value={note.content}
                 onChange={handleChange}
+                onClick={expand}
               />
             </Box>
           </form>
