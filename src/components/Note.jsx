@@ -9,7 +9,7 @@ export default function Note(props) {
   }
 
   return (
-    <Card>
+    <Card sx={{width: 250}}>
       <CardHeader title={props.title} />
       <CardContent>{props.content}</CardContent>
       <CardActions>
