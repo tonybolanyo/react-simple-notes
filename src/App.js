@@ -5,10 +5,11 @@ import Header from './components/Header';
 import { useState } from 'react';
 import Note from './components/Note';
 import { Box } from '@mui/system';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
 
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useLocalStorage('notes', []);
 
   function addNote(newNote) {
     setNotes(prevNotes => {
