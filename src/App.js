@@ -10,7 +10,6 @@ function App() {
 
   function addNote(newNote) {
     setNotes(prevNotes => {
-      console.log('setNotes', prevNotes, newNote);
       return [...prevNotes, newNote];
     });
   }

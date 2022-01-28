@@ -1,5 +1,6 @@
 import { Add } from "@mui/icons-material";
-import { Fab, TextField } from "@mui/material";
+import { Card, CardActions, CardContent, Fab, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import { useState } from "react";
 
 export default function NewNoteForm(props) {
@@ -30,30 +31,46 @@ export default function NewNoteForm(props) {
   }
 
   return (
-    <div>
-      <form className="create-note">
-        <TextField
-          id="title"
-          label="Title"
-          name="title"
-          variant="filled"
-          value={note.title}
-          onChange={handleChange}
-        />
-        <TextField
-          id="content"
-          label="Contenido"
-          name="content"
-          variant="filled"
-          multiline
-          rows={3}
-          value={note.content}
-          onChange={handleChange}
-        />
-        <Fab>
-          <Add onClick={submitNote} />
-        </Fab>
-      </form>
-    </div>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }} mt={2}>
+      <Card sx={{ maxWidth: 480, width: '100%' }}>
+        <CardContent>
+
+          <form className="create-note">
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column'
+              }}
+              mt={2}
+            >
+              <TextField
+                id="title"
+                label="Title"
+                name="title"
+                variant="filled"
+                value={note.title}
+                onChange={handleChange}
+              />
+              <TextField
+                id="content"
+                label="Contenido"
+                name="content"
+                variant="filled"
+                multiline
+                rows={3}
+                value={note.content}
+                onChange={handleChange}
+              />
+            </Box>
+          </form>
+        </CardContent>
+        <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Fab size="small">
+            <Add onClick={submitNote} />
+          </Fab>
+        </CardActions>
+      </Card >
+    </Box>
   )
 }
