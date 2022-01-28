@@ -1,13 +1,21 @@
 import { DeleteTwoTone } from "@mui/icons-material";
-import { Card, CardActions, CardContent, CardHeader } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardHeader } from "@mui/material";
 
 export default function Note(props) {
+
+  function handleClick() {
+    console.log('Borrar nota')
+    props.onDelete(props.id);
+  }
+
   return (
     <Card>
       <CardHeader title={props.title} />
       <CardContent>{props.content}</CardContent>
       <CardActions>
-        <DeleteTwoTone />
+        <Button onClick={handleClick}>
+          <DeleteTwoTone />
+        </Button>
       </CardActions>
     </Card>
   )
